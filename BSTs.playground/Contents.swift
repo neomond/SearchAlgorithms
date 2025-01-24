@@ -6,6 +6,8 @@
 // The left child and its subtree contain values less than the parent node’s values
 // The right child and its subtree contain values greater than the parent node’s values
 // Each left and right subtree is in itself an implementation of a BST
+// On average, insertion, retrieval, and deletion all run in O(log n) time complexity
+// Trees can be traversed in many ways, in order traversal will visit nodes in their least to greatest order
 
 class BinaryNode<T> {
     
