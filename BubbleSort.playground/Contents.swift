@@ -54,3 +54,56 @@ print("Array 2 to sort: \(countForwards)")
 bubbleSort(inputArray: &countForwards)
 print("Sorted array 2: \(countForwards)")
 
+
+
+// MARK: Bubble Sort Cheatsheet
+
+// MARK: Definition
+//Bubble Sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. It "bubbles" the largest unsorted element to its correct position with each iteration.
+
+// MARK: Algorithm
+// - Start from the beginning of the array.
+// - Compare adjacent elements:
+// - If the current element is larger than the next element, swap them.
+// - Repeat this process for every pair of adjacent elements.
+// - With each pass, the largest element gets sorted to the correct position.
+// - Repeat the process for the unsorted portion of the array.
+
+
+// MARK: Pseudocode
+//  for i = 0 to n - 1:
+//    for j = 0 to n - i - 2:
+//        if array[j] > array[j + 1]:
+//            swap(array[j], array[j + 1])
+
+// MARK: Implementation
+// Early Exit: If no swaps are made in a pass, the array is already sorted, and you can stop early.
+// Early Exit: If no swaps are made in a pass, the array is already sorted, and you can stop early.
+
+func optimizedBubbleSort(inputArray: inout [Int]) {
+    for i in 0..<inputArray.count {
+        var swapped = false
+        for j in 1..<inputArray.count - i {
+            if inputArray[j] < inputArray[j - 1] {
+                let temp = inputArray[j]
+                inputArray[j] = inputArray[j - 1]
+                inputArray[j - 1] = temp
+                swapped = true
+            }
+        }
+        if !swapped {
+            break // Exit early if no swaps were made
+        }
+    }
+}
+
+var array = [5, 1, 4, 2, 8]
+bubbleSort(inputArray: &array)
+print(array) // Output: [1, 2, 4, 5, 8]
+
+
+//Steps:
+//[5, 1, 4, 2, 8] → Swap → [1, 5, 4, 2, 8]
+//[1, 5, 4, 2, 8] → Swap → [1, 4, 5, 2, 8]
+//[1, 4, 5, 2, 8] → Swap → [1, 4, 2, 5, 8]
+//[1, 4, 2, 5, 8] → No Swap (8 is already sorted)
